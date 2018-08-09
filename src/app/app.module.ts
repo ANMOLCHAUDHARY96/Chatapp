@@ -3,10 +3,12 @@ import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
 import { SigninComponent } from './signin/signin.component';
-import { SocialLoginModule, AuthServiceConfig,  GoogleLoginProvider} from "angular-6-social-login";
+import { SocialLoginModule, AuthServiceConfig,  GoogleLoginProvider} from 'angular-6-social-login';
 import { ChatappComponent } from './chatapp/chatapp.component';
 import { RouterModule, Routes } from '@angular/router';
 import {HttpClientModule, HttpHeaders}from '@angular/common/http';
+import{FormsModule}from '@angular/forms';
+
 const route: Routes = [{
   path: 'chatapp',
   component: ChatappComponent
@@ -47,7 +49,8 @@ return config;
     BrowserModule,
     SocialLoginModule,
     HttpClientModule,
-    RouterModule.forRoot(route),HttpClientModule,HttpHeaders
+    RouterModule.forRoot(route),HttpClientModule,
+    FormsModule
   ],
   providers: [{
     provide: AuthServiceConfig,

@@ -22,19 +22,11 @@ export class SigninComponent implements OnInit {
         console.log(socialPlatform + " sign in data : ", userData);
         // Now sign-in with userData
         // ...
-        this.router.navigate(['/signin']);
+        this.router.navigate(['/chatapp']);
 
       }
     );
   }
- 
-  public token()
-  {
-    
-  }
-
-
-
 
 
   ngOnInit() {
