@@ -70,6 +70,14 @@ export class ChatappComponent implements OnInit {
       })
   }
 
+  joinChannel(){
+    console.log(this.msgstore);
+    this.authService.joinChannel(this.msgstore).subscribe(res=>{
+      console.log(res);
+    },err=>{
+      console.log(err);
+    })
+  } 
 
 
   Back() {

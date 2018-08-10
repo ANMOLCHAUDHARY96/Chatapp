@@ -1,9 +1,17 @@
-<p>
-  chatapp works!
-  <button (click)="Back()">Back</button>
-  <button (click)="authenticate()">Authenticate</button>
-  <button (click)="addChannel()">Create Channel</button>
-<input type="text" placeholder="Search channel" [(ngModel)]="newChannel">
 
+
+<body>
+<p>
+  Welcome to Chatapp
+  <br/>
+  <button (click)="Back()">Back</button>
+
+  <!--<button (click)="authenticate()">Authenticate</button>-->
+ <br/> 
+  <button (click)="addChannel()">Create Channel</button><br/>
+<input type="text" placeholder="Search channel" [(ngModel)]="newChannel">
+<br />{{foundChannel}}
+<button (click)="joinChannel()">Join</button>
   
 </p>
+</body>

@@ -35,6 +35,13 @@ export class AuthService {
     return this.httpClient.get("https://chat.twilio.com/v2/Services/" + this.serviceId + "/Channels", this.httpOptions).pipe(map(data => data));
   }
 
-  
+  myChannelId:string="CH2e8a3e90caf3440aa3bfa672a0d4a483";
+  identity:string="anmol.singh@kelltontech";
+  joinChannel(channelId):Observable<any>{
+    // this.myChannelId=channelId;
+    return this.httpClient.post("https://chat.twilio.com/v2/Services/"+this.serviceId+"/Channels/"+channelId+"/Members","ChannelSid="+channelId+"&Identity="+this.identity+"&ServiceSid="+this.serviceId,this.httpOptions); 
+  }
+
+
 }
 
