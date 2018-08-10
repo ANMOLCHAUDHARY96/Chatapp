@@ -80,6 +80,17 @@ export class ChatappComponent implements OnInit {
   } 
 
 
+ myMessage:string;
+sendMessage(){
+    this.authService.sendMessage(this.myMessage).subscribe(res=>{
+      console.log(res.from);
+    },
+  err=>{
+    console.log(err);
+  })
+  }
+
+
   Back() {
     this.router.navigate(['/signin']);
   }

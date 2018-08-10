@@ -1,7 +1,7 @@
 
 
 <body>
-<p>
+
   Welcome to Chatapp
   <br/>
   <button (click)="Back()">Back</button>
@@ -9,9 +9,38 @@
   <!--<button (click)="authenticate()">Authenticate</button>-->
  <br/> 
   <button (click)="addChannel()">Create Channel</button><br/>
-<input type="text" placeholder="Search channel" [(ngModel)]="newChannel">
+<input type="text" placeholder="Create Channel" [(ngModel)]="newChannel"><br>
+
+<ul *ngFor="let ch of carray">
+  <li>{{ch}}
+</ul>
+<button (click)="searchChannel()">Search</button>
+
+<input type="text" placeholder="Search Channel here" [(ngModel)]="channel" /><br />
+  
 <br />{{foundChannel}}
 <button (click)="joinChannel()">Join</button>
+
+
+<div class="right">
+
+  <div class="chat">
+    <ul *ngFor="let message of allMessages" >
+        <span [ngClass]="message.sender?'my':'your'">{{message.msg}}</span>
+    </ul>
+      
+      
+
+  </div>
+  <div class="message">
+    <div class="messageField">
+      <div class="msgSend">
+        <input type="text" [(ngModel)]="myMessage" class="msg">
+        <button (click)="sendMessage()">send</button>
+      </div>
+    </div>  
+  </div>
   
-</p>
+</div>
+
 </body>
