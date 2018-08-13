@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from '../auth.service';
 import { FormsModule } from '@angular/forms';
+import { HttpClient } from '../../../node_modules/@types/selenium-webdriver/http';
 @Component({
   selector: 'app-chatapp',
   templateUrl: './chatapp.component.html',
@@ -9,8 +10,9 @@ import { FormsModule } from '@angular/forms';
 })
 export class ChatappComponent implements OnInit {
 
+  
   constructor(private router: Router, private authService: AuthService) { }
-
+ 
   authenticate() {
     this.authService.setJson().subscribe(response => {
       console.log(response)
@@ -30,11 +32,11 @@ export class ChatappComponent implements OnInit {
       err => {
         console.log(err);
       });
-    
+
   }
 
   channel: string = "";
-  RChannel = "";
+  RChannel = "";        //when channel found
   carray: any = [];
   msgstore = "";
   arrayLen;
@@ -51,9 +53,9 @@ export class ChatappComponent implements OnInit {
         this.arrayLen = this.carray.length;
 
         for (let index = 0; index < this.arrayLen; index++) {
-      
+
           if (this.carray[index] == this.channel) {
-            console.log("channel fopund");
+            console.log("channel found");
             this.RChannel = this.channel;
             this.msgstore = res.channels[index].sid;
             break;
@@ -70,32 +72,65 @@ export class ChatappComponent implements OnInit {
       })
   }
 
-  joinChannel(){
+  joinChannel() {
     console.log(this.msgstore);
-    this.authService.joinChannel(this.msgstore).subscribe(res=>{
+    this.authService.joinChannel(this.msgstore).subscribe(res => {
       console.log(res);
-    },err=>{
+    }, err => {
       console.log(err);
     })
-  } 
-
-
- myMessage:string;
-sendMessage(){
-    this.authService.sendMessage(this.myMessage).subscribe(res=>{
-      console.log(res.from);
-    },
-  err=>{
-    console.log(err);
-  })
   }
 
 
-  Back() {
+  myMessage: string;
+  sendMessage() {
+if(this.myMessage==""){
+  return;
+}
+
+    this.authService.sendMessage(this.myMessage).subscribe(res => {
+      console.log(res);
+      this.myMessage="";
+    },
+      err => {
+        console.log(err);
+      })
+
+    this.getAllMessages();
+  }
+
+  totmsg: number;
+  Messagesset: Array<any>;
+  getAllMessages() {
+    this.authService.getAllMessages().subscribe(res => {
+      this.Messagesset = res.messages;
+      // console.log(res.messages.body);
+      this.totmsg = res.messages.length;
+      console.log("total   " + this.totmsg);
+      for (let start = 0; start < this.totmsg; start++) {
+
+        console.log("Msg ", start + " is    " + res.messages[start].body);
+        this.Messagesset[start].body = res.messages[start].body;
+      }
+      //  this.Messagesset=res.messages.body;
+    },
+      err => {
+        console.log(err);
+      })
+  }
+
+
+
+
+
+  Logout() {
+    localStorage.clear();
+    alert("Now Logout")
     this.router.navigate(['/signin']);
   }
 
   ngOnInit() {
+    this.getAllMessages();
   }
 
 }

@@ -1,46 +1,63 @@
+<div class="sidebar">
 
+  <i class="glyphicon glyphicon-bell"></i>
 
-<body>
-
-  Welcome to Chatapp
-  <br/>
-  <button (click)="Back()">Back</button>
-
-  <!--<button (click)="authenticate()">Authenticate</button>-->
- <br/> 
-  <button (click)="addChannel()">Create Channel</button><br/>
-<input type="text" placeholder="Create Channel" [(ngModel)]="newChannel"><br>
-
-<ul *ngFor="let ch of carray">
-  <li>{{ch}}
-</ul>
-<button (click)="searchChannel()">Search</button>
-
-<input type="text" placeholder="Search Channel here" [(ngModel)]="channel" /><br />
-  
-<br />{{foundChannel}}
-<button (click)="joinChannel()">Join</button>
-
-
-<div class="right">
-
-  <div class="chat">
-    <ul *ngFor="let message of allMessages" >
-        <span [ngClass]="message.sender?'my':'your'">{{message.msg}}</span>
-    </ul>
-      
-      
-
+  <div id="log">
+    <button (click)="Logout()">Logout</button>
   </div>
-  <div class="message">
-    <div class="messageField">
-      <div class="msgSend">
-        <input type="text" [(ngModel)]="myMessage" class="msg">
-        <button (click)="sendMessage()">send</button>
-      </div>
-    </div>  
+
+  <div id="add">
+    <div id="ch">
+      <button (click)="addChannel()">Create Channel</button>
+      <br/>
+    </div>
+    <input type="text" placeholder="Create Channel" [(ngModel)]="newChannel">
+    <br>
   </div>
-  
+
+
+
+
+  <ul *ngFor="let ch of carray">
+    <li>{{ch}}
+  </ul>
+
+
+  <div id="ch1">
+    <button (click)="searchChannel()">Search</button>
+
+    <input type="text" placeholder="Search Channel here" [(ngModel)]="channel" />
+    <br />
+  </div>
+  {{foundChannel}}
+
+  <div id="join">
+    <button (click)="joinChannel()">Join</button>
+  </div>
 </div>
+<div class="header">
+  <span id="phone" class="fa fa-phone"></span>
+  <i class="material-icons"></i>
+  <i class="glyphicon glyphicon-exclamation-sign" title="Its a chat appllication betweeh the user in a channel"></i>
 
-</body>
+  <i class="glyphicon glyphicon-cog"></i>
+  <input type="text" class="search" name="search" placeholder="search">
+  <i class="glyphicon glyphicon-star-empty"></i>
+  <i class="glyphicon glyphicon-option-vertical"></i>
+</div>
+<div class="main">
+
+    <h3>Chatapp</h3>
+  <ul *ngFor="let message of Messagesset">
+    <span>{{message.body}}</span>
+  </ul>
+
+
+</div>
+<div class="footer">
+  <input type="text" [(ngModel)]="myMessage" placeholder="Send message" class="msg">
+  <div id="send">
+    <button (click)="sendMessage()">send</button>
+  </div>
+  <i class="fa fa-paper-plane-o" (click)="sendmessage()"></i>
+</div>
