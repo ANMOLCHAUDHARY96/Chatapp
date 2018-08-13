@@ -1,14 +1,18 @@
 <div class="sidebar">
-
+  
   <i class="glyphicon glyphicon-bell"></i>
 
   <div id="log">
-    <button (click)="Logout()">Logout</button>
+    <button (click)="Logout()" class = "btn btn-danger">Logout</button>
+  <!--  <ul *ngFor="let ch of carray">
+      <li (click)="showchannel(ch.links.messages)"><p>{{ch.unique_name}}</p></li>
+    </ul>
+    {{foundChannel}}-->
   </div>
 
   <div id="add">
     <div id="ch">
-      <button (click)="addChannel()">Create Channel</button>
+      <button (click)="addChannel()" class = "btn btn-success">CreateChannel</button>
       <br/>
     </div>
     <input type="text" placeholder="Create Channel" [(ngModel)]="newChannel">
@@ -16,48 +20,50 @@
   </div>
 
 
-
-
-  <ul *ngFor="let ch of carray">
-    <li>{{ch}}
-  </ul>
-
-
   <div id="ch1">
-    <button (click)="searchChannel()">Search</button>
-
-    <input type="text" placeholder="Search Channel here" [(ngModel)]="channel" />
+<button (click)="searchChannel()" class = "btn btn-warning">Search</button>
+  
+    <input type="text" id="searchedChannel"placeholder="Search Channel here" [(ngModel)]="channel">
+    <ul *ngFor="let ch of carray">
+      <li><p (click)=" getAllMessages(ch.links.messages)">{{ch.unique_name}}</p></li>
+    </ul>
     <br />
+
   </div>
-  {{foundChannel}}
+ 
 
   <div id="join">
-    <button (click)="joinChannel()">Join</button>
+    <button (click)="joinChannel()" class = "btn btn-primary">Join</button>
   </div>
 </div>
-<div class="header">
-  <span id="phone" class="fa fa-phone"></span>
+
+
+<!--<div class="header">
+ <span id="phone" class="fa fa-phone"></span>
   <i class="material-icons"></i>
   <i class="glyphicon glyphicon-exclamation-sign" title="Its a chat appllication betweeh the user in a channel"></i>
 
   <i class="glyphicon glyphicon-cog"></i>
   <input type="text" class="search" name="search" placeholder="search">
   <i class="glyphicon glyphicon-star-empty"></i>
-  <i class="glyphicon glyphicon-option-vertical"></i>
-</div>
+  <i class="glyphicon glyphicon-option-vertical">
+</div>-->
+
+
 <div class="main">
 
     <h3>Chatapp</h3>
   <ul *ngFor="let message of Messagesset">
     <span>{{message.body}}</span>
   </ul>
-
-
 </div>
+
+
 <div class="footer">
   <input type="text" [(ngModel)]="myMessage" placeholder="Send message" class="msg">
   <div id="send">
-    <button (click)="sendMessage()">send</button>
+    <button (click)="sendMessage() " class="btn btn-primary">send</button>
+    <i class="icon-user icon-white"></i>
   </div>
-  <i class="fa fa-paper-plane-o" (click)="sendmessage()"></i>
+
 </div>

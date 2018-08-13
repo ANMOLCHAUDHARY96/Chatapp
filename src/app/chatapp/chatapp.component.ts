@@ -10,9 +10,9 @@ import { HttpClient } from '../../../node_modules/@types/selenium-webdriver/http
 })
 export class ChatappComponent implements OnInit {
 
-  
+
   constructor(private router: Router, private authService: AuthService) { }
- 
+
   authenticate() {
     this.authService.setJson().subscribe(response => {
       console.log(response)
@@ -42,14 +42,17 @@ export class ChatappComponent implements OnInit {
   arrayLen;
   searchChannel() {
     this.authService.searchChannel().subscribe(res => {
-      console.log("RES value" + (res.channels[1].unique_name));
-      console.log("len" + res.channels.length);
+      console.log(res, "check", this.channel);
+      //  console.log("len" + res.channels.length);
 
       for (let index = 0; index < res.channels.length; index++) {
-        console.log("array " + (res.channels[index].sid));
-        this.carray.push(res.channels[index].unique_name)
-        console.log("channel array: " + this.carray);
-        console.log("channel name: " + this.channel);
+        if (this.channel === res.channels[index].unique_name) {
+          console.log("array " + (res.channels[index].sid));
+          this.carray.push(res.channels[index])
+        }
+        //  console.log(res.channels[index].unique_name)
+        //  console.log("channel array: " + this.carray);
+        //  console.log("channel name: " + this.channel);
         this.arrayLen = this.carray.length;
 
         for (let index = 0; index < this.arrayLen; index++) {
@@ -84,25 +87,27 @@ export class ChatappComponent implements OnInit {
 
   myMessage: string;
   sendMessage() {
-if(this.myMessage==""){
-  return;
-}
+    if (this.myMessage == " ") {
+      return;
+    }
 
-    this.authService.sendMessage(this.myMessage).subscribe(res => {
+    this.authService.sendMessage(this.myMessage, this.url).subscribe(res => {
       console.log(res);
-      this.myMessage="";
+      this.myMessage = "";
+     
     },
       err => {
         console.log(err);
       })
-
-    this.getAllMessages();
+      this.getAllMessages(this.url);
   }
 
   totmsg: number;
   Messagesset: Array<any>;
-  getAllMessages() {
-    this.authService.getAllMessages().subscribe(res => {
+  url;
+  getAllMessages(url) {
+    this.url = url;
+    this.authService.getAllMessages(url).subscribe(res => {
       this.Messagesset = res.messages;
       // console.log(res.messages.body);
       this.totmsg = res.messages.length;
@@ -125,12 +130,12 @@ if(this.myMessage==""){
 
   Logout() {
     localStorage.clear();
-    alert("Now Logout")
+    alert("Want to Logout")
     this.router.navigate(['/signin']);
   }
 
   ngOnInit() {
-    this.getAllMessages();
+    this.Messagesset = [];
   }
 
 }

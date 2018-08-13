@@ -12,7 +12,7 @@
 .header {
   width: 80%;
   height: 14%;
-  left: 8%;
+  left: 28%;
   top: 11%;
   overflow: auto;
   position: absolute;
@@ -29,10 +29,10 @@
 }
 
 input {
-  width: 99%;
-  height: 30px;
+  width: 90%;
+  height: 35px;
   border-radius: 5px;
-  margin-top: 10px;
+  margin-top: 13px;
   color: black;
   background-color: antiquewhite;
 }
@@ -43,7 +43,7 @@ p {
 }
 
 button {
-  margin-left: 50%;
+  margin-left: 54%;
 }
 
 #search {
@@ -82,7 +82,7 @@ h4 {
 }
 
 button {
-  margin-left: 87%;
+  margin-left: 0%;
   margin-top: -60px;
 }
 
@@ -114,10 +114,15 @@ button {
   margin-top: 10px;
 }
 
+
+
+
+
 #send {
   height: 10%;
-  margin-top: -7%;
-  margin-right: 5%;
+    margin-top: 0.5%;
+    margin-right: 12%;
+    margin-left: 76.3%;
 }
 
 #log {
