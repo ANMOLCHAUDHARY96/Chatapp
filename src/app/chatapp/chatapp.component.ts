@@ -48,6 +48,7 @@ export class ChatappComponent implements OnInit {
       for (let index = 0; index < res.channels.length; index++) {
         if (this.channel === res.channels[index].unique_name) {
           console.log("array " + (res.channels[index].sid));
+          this.msgstore = res.channels[index].sid;
           this.carray.push(res.channels[index])
         }
         //  console.log(res.channels[index].unique_name)
@@ -60,7 +61,8 @@ export class ChatappComponent implements OnInit {
           if (this.carray[index] == this.channel) {
             console.log("channel found");
             this.RChannel = this.channel;
-            this.msgstore = res.channels[index].sid;
+            
+          
             break;
           }
           else {
@@ -76,12 +78,14 @@ export class ChatappComponent implements OnInit {
   }
 
   joinChannel() {
+    
     console.log(this.msgstore);
     this.authService.joinChannel(this.msgstore).subscribe(res => {
       console.log(res);
     }, err => {
       console.log(err);
     })
+    alert("Wnat to join")
   }
 
 
@@ -125,10 +129,7 @@ export class ChatappComponent implements OnInit {
   }
 
 
-
-
-
-  Logout() {
+   Logout() {
     localStorage.clear();
     alert("Want to Logout")
     this.router.navigate(['/signin']);

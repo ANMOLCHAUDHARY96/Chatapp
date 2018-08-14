@@ -8,6 +8,7 @@ import { ChatappComponent } from './chatapp/chatapp.component';
 import { RouterModule, Routes } from '@angular/router';
 import {HttpClientModule, HttpHeaders}from '@angular/common/http';
 import{FormsModule}from '@angular/forms';
+import { PageComponent } from './page/page.component';
 
 const route: Routes = [{
   path: 'chatapp',
@@ -23,7 +24,7 @@ const route: Routes = [{
 },
 {
   path: '**',
-  component: SigninComponent
+  component: PageComponent
 }
 ]
 
@@ -43,7 +44,8 @@ return config;
   declarations: [
     AppComponent,
     SigninComponent,
-    ChatappComponent
+    ChatappComponent,
+    PageComponent
   ],
   imports: [
     BrowserModule,
