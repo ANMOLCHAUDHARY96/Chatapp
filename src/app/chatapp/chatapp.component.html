@@ -53,8 +53,8 @@
 <div class="main">
 
     <h3>Chatapp</h3>
-  <ul *ngFor="let message of Messagesset">
-    <span>{{message.body}}</span>
+  <ul *ngFor="let message of Messagesset"        [ngClass]='{"sender":(email==email),"reciever":(email!=email)}'>
+    <span>{{email}}<br />{{message.body}}</span>
   </ul>
 </div>
 

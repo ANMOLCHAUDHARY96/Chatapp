@@ -86,6 +86,21 @@ button {
   margin-top: -60px;
 }
 
+.sender{background-color: rgb(197, 193, 190);
+  height: 62px;
+  width: 380px;
+overflow: hidden;
+padding: 10px;
+}
+
+
+.reciever{background-color: aquamarine;
+  height: 62px;
+  width: 200px;
+
+}
+
+
 .fa-paper-plane-o {
   font-size: 25px;
   margin-left: 10px;

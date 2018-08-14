@@ -22,6 +22,8 @@ export class SigninComponent implements OnInit {
         console.log(socialPlatform + " sign in data : ", userData);
         // Now sign-in with userData
         // ...
+        localStorage.setItem("user",userData.name);
+        localStorage.setItem("email",userData.email);
         this.router.navigate(['/chatapp']);
 
       }

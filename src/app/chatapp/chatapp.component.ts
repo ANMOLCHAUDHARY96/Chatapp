@@ -10,7 +10,7 @@ import { HttpClient } from '../../../node_modules/@types/selenium-webdriver/http
 })
 export class ChatappComponent implements OnInit {
 
-
+  email=localStorage.getItem("email")
   constructor(private router: Router, private authService: AuthService) { }
 
   authenticate() {
@@ -21,7 +21,6 @@ export class ChatappComponent implements OnInit {
         console.log(err);
       });
     // console.log("authenticated"+JSON.stringify(this.authService.setJson()));
-
   }
   newChannel: string;
   addChannel() {
