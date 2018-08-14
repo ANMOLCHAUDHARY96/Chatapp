@@ -24,7 +24,7 @@
 <button (click)="searchChannel()" class = "btn btn-warning">Search</button>
   
     <input type="text" id="searchedChannel"placeholder="Search Channel here" [(ngModel)]="channel">
-    <ul *ngFor="let ch of carray">
+    <ul *ngFor="let ch of carray" class="channels">
       <li><p (click)=" getAllMessages(ch.links.messages)">{{ch.unique_name}}</p></li>
     </ul>
     <br />

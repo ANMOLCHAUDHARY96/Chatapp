@@ -27,11 +27,11 @@ export class ChatappComponent implements OnInit {
     console.log("new Channel NAme: " + this.newChannel);
     this.authService.addChannel(this.newChannel).subscribe(res => {
       console.log("chennal created " + JSON.stringify(res.sid));
+      alert("Channel Created")
     },
       err => {
         console.log(err);
       });
-
   }
 
   channel: string = "";
